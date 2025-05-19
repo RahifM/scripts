@@ -1,5 +1,7 @@
 set -e
 
+export botmsg="curl -s -X POST "https://api.telegram.org/bot${botapi}/sendMessage" -d chat_id="${chatid}" -d "disable_web_page_preview=true" -d "parse_mode=html" -d text"
+
 sudo apt update && sudo apt install ffmpeg -y
 
 echo -e "\nPlease set input and input! (only 720p encodes supported as of now)\n"
@@ -25,4 +27,4 @@ up() {
 
 low
 
-[ -f ${o} ] && echo "File found" && up && echo "Uploading done" || echo "Failed upload"
+[ -f ${o} ] && echo "File found" && $botmsg="encode success" && up && echo "Uploading done" && $botmsg="encode uploaded" || ( echo "Failed upload" && $botmsg="encode or upload failed" )
