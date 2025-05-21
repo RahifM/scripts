@@ -1,4 +1,4 @@
-set -e
+#set -e
 
 export botmsg="curl -s -X POST "https://api.telegram.org/bot${botapi}/sendMessage" -d chat_id="${chatid}" -d "disable_web_page_preview=true" -d "parse_mode=html" -d text"
 
@@ -16,7 +16,8 @@ fi
 echo -e "\n"
 
 low() {
-time ffmpeg -i  "${i}" -s 1280x720 -c copy -map 0 -c:v libx265 -x265-params crf=28 -pix_fmt yuv420p -preset slow  "${o}"
+	rm ${o}*.txt
+	time ffmpeg -i  "${i}" -s 1280x720 -c copy -map 0 -c:v libx265 -x265-params crf=28 -pix_fmt yuv420p -preset slow  "${o}" 2>&1 | tee ${o}-$(date +'%Y%m%d-%H%M').txt
 }
 
 up() {
@@ -27,4 +28,4 @@ up() {
 
 low
 
-[ -f ${o} ] && echo "File found" && $botmsg="encode success" && up && echo "Uploading done" && $botmsg="encode uploaded" || ( echo "Failed upload" && $botmsg="encode or upload failed" )
+[ -f ${o} ] && up && echo "Encode / upload success" && $botmsg="Encode / upload success" || ( echo "Encode / upload failed" && $botmsg="Encode / upload failed" )
