@@ -28,4 +28,4 @@ up() {
 
 low
 
-[ -f ${o} ] && up && echo "Encode / upload success" && $botmsg="Encode / upload success" || ( echo "Encode / upload failed" && $botmsg="Encode / upload failed" )
+[ -f ${o} ] && up && echo "${o} encode / upload success" && $botmsg="${o} encode / upload success" || ( echo "${o} encode / upload failed" && $botmsg="${o} encode / upload failed" )
