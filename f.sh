@@ -2,7 +2,7 @@
 
 export botmsg="curl -s -X POST "https://api.telegram.org/bot${botapi}/sendMessage" -d chat_id="${chatid}" -d "disable_web_page_preview=true" -d "parse_mode=html" -d text"
 
-sudo apt update && sudo apt install ffmpeg -y
+sudo apt install ffmpeg -y
 
 echo -e "\nPlease set input and input! (only 720p encodes supported as of now)\n"
 read -e -p "Input: " i
