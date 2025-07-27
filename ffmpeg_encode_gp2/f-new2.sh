@@ -1,6 +1,14 @@
 export botmsg="curl -s -X POST "https://api.telegram.org/bot${BOTAPI}/sendMessage" -d chat_id="${CHATID}" -d "disable_web_page_preview=true" -d "parse_mode=html" -d text"
 
-cd tm && time ./tm2.sh || mkdir tm && cd tm && wget https://raw.githubusercontent.com/RahifM/scripts/refs/heads/newffmpeg/tm2.sh && chmod +x tm2.sh && time ./tm2.sh
+tm (){
+        ( sudo apt install transmission-cli transmission-daemon -y && transmission-daemon && transmission-remote -l && transmission-remote -w $(pwd) ) 2>&1 | tee tm.txt
+}
+        tm
+
+        if [ "$(grep success tm.txt)" == "" ] ; then
+                tm
+		rm tm.txt
+        fi
 
 transmission-remote --start-paused -a "https://github.com/zmzu/dump/releases/download/1.0/Bleach.Box.1-6.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.torrent" &&
 	transmission-remote -t 1 -G all && transmission-remote -t 1 -g5 && transmission-remote -t 1 -f | grep Yes && transmission-remote -t 1 -s
@@ -12,7 +20,7 @@ fmpg() {
 
 	cd Bl* && cd Bl* && pwd && du -hs *
 
-	time sudo apt install ffmpeg -y
+	#time sudo apt install ffmpeg -y
 
 echo -e "\nPlease set input and input! (only 720p encodes supported as of now)\n"
 echo ${i}
