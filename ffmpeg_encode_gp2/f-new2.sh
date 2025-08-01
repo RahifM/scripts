@@ -30,7 +30,8 @@ echo ${o}
 
 
 if [ -z "$i" -o -z "$o" ]; then
-       echo -e "\nNo input or output found\n"                        exit 1
+       echo -e "\nNo input or output found\n"
+       exit 1
 fi                                                                                                                          $botmsg="${o} encode started"
 
 echo -e "\n"
