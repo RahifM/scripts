@@ -46,7 +46,7 @@ low() {
 }
 
 up() {
-[ -f "github-release-2.0.0.2-ubuntu" ] && echo "gh rel already exists" || ( echo "gh rel not found" && time wget https://github.com/tfausak/github-release/releases/download/2.0.0.2/github-release-2.0.0.2-ubuntu && chmod +x github-release-2.0.0.2-ubuntu )
+[ -f "github-release-2.0.0.2-ubuntu-bkup" ] && echo "gh rel already exists" || ( echo "gh rel not found" && time wget https://github.com/RahifM/releases/releases/download/1.0/github-release-2.0.0.2-ubuntu-bkup && chmod +x github-release-2.0.0.2-ubuntu-bkup )
 
 ./gi* upload --token $GHSECRET --owner 'zmzu' --repo 'be_dump' --tag '1.0' --file ${o} --name ${o}
 }
