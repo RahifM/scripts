@@ -1,6 +1,24 @@
 fmpgscrpt (){
 export botmsg="curl -s -X POST "https://api.telegram.org/bot${BOTAPI}/sendMessage" -d chat_id="${CHATID}" -d "disable_web_page_preview=true" -d "parse_mode=html" -d text"
 
+TG=$HOME/telegram.sh/telegram
+
+if [ -d "$HOME/telegram.sh" ]; then
+echo "Tgsh already exists"
+else
+time git clone https://github.com/fabianonline/telegram.sh $HOME/telegram.sh
+if [ -d "$HOME/.telegram.sh" ]; then
+echo ".Tgsh already exists"
+else
+cat <<'EOF' >> $HOME/.telegram.sh
+TELEGRAM_TOKEN="demo1"
+TELEGRAM_CHAT="demo2"
+EOF
+sed -i s/demo1/${BOTAPI}/g $HOME/.telegram.sh
+sed -i s/demo2/${CHATID}/g $HOME/.telegram.sh
+fi
+fi
+
 tm (){
         ( sudo apt install transmission-cli transmission-daemon -y && transmission-daemon && transmission-remote -l && transmission-remote -w $(pwd) ) 2>&1 | tee tm.txt
 }
@@ -75,5 +93,7 @@ while true ; do
 done
 }
 
-fmpgscrpt 2>&1 | tee log.txt
+fmpgscrpt 2>&1 | tee log-$(date +'%Y%m%d-%H%M').txt
+$TG -f log*.txt
+rm log*.txt
 gp stop
