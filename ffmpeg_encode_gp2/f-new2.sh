@@ -1,7 +1,9 @@
-fmpgscrpt (){
 export botmsg="curl -s -X POST "https://api.telegram.org/bot${BOTAPI}/sendMessage" -d chat_id="${CHATID}" -d "disable_web_page_preview=true" -d "parse_mode=html" -d text"
 
-TG=$HOME/telegram.sh/telegram
+export TG=$HOME/telegram.sh/telegram
+
+fmpgscrpt (){
+
 
 if [ -d "$HOME/telegram.sh" ]; then
 echo "Tgsh already exists"
@@ -32,11 +34,11 @@ tm (){
 	
 	transmission-remote --start-paused -a "https://github.com/zmzu/dump/releases/download/1.0/Bleach.Box.1-6.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.torrent" &&
 	transmission-remote -t 1 -G all &&
-	transmission-remote -t 1 -g13 &&
+	transmission-remote -t 1 -g16 &&
 	transmission-remote -t 1 -f | grep Yes && transmission-remote -t 1 -s
 
-export i=Bleach.E014.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
-export o=Bleach.E014.mkv
+export i=Bleach.E017.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
+export o=Bleach.E017.mkv
 
 fmpg() {
 
@@ -91,8 +93,8 @@ while true ; do
 	fi
 	echo $(transmission-remote -t 1 -i | grep State)
 	echo $(transmission-remote -t 1 -i | grep Percent)
-	echo "check back after 5s"
-  sleep 5
+	echo "check back after 15s"
+  sleep 15
 done
 }
 
