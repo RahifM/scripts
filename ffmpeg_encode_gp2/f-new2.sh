@@ -78,6 +78,8 @@ low
 
 while true ; do
 	if [ "$(transmission-remote -t 1 -i | grep State)" = "  State: Idle" ] ; then
+		echo $(transmission-remote -t 1 -i | grep State)
+		echo $(transmission-remote -t 1 -i | grep Percent)
 		echo "Idling, starting encode"
 		transmission-remote -t 1 -S
 		ls && pwd
@@ -89,8 +91,8 @@ while true ; do
 	fi
 	echo $(transmission-remote -t 1 -i | grep State)
 	echo $(transmission-remote -t 1 -i | grep Percent)
-	echo "check back after 15s"
-  sleep 15
+	echo "check back after 5s"
+  sleep 5
 done
 }
 
