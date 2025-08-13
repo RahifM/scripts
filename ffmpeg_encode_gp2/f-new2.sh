@@ -7,6 +7,8 @@ if [ -d "$HOME/telegram.sh" ]; then
 echo "Tgsh already exists"
 else
 time git clone https://github.com/fabianonline/telegram.sh $HOME/telegram.sh
+fi
+
 if [ -d "$HOME/.telegram.sh" ]; then
 echo ".Tgsh already exists"
 else
@@ -16,7 +18,6 @@ TELEGRAM_CHAT="demo2"
 EOF
 sed -i s/demo1/${BOTAPI}/g $HOME/.telegram.sh
 sed -i s/demo2/${CHATID}/g $HOME/.telegram.sh
-fi
 fi
 
 tm (){
