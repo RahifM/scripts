@@ -4,7 +4,6 @@ export TG=$HOME/telegram.sh/telegram
 
 fmpgscrpt (){
 
-
 if [ -d "$HOME/telegram.sh" ]; then
 echo "Tgsh already exists"
 else
@@ -96,7 +95,7 @@ while true ; do
 done
 }
 
-fmpgscrpt 2>&1 | tee log-$(date +'%Y%m%d-%H%M').txt
-$TG -f log*.txt
-rm log*.txt
+fmpgscrpt 2>&1 | tee ${o}-log-$(date +'%Y%m%d-%H%M').txt
+$TG -f ${o}-log*.txt
+rm ${o}-log*.txt
 gp stop
