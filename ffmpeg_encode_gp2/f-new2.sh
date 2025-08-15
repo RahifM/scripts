@@ -1,3 +1,5 @@
+export TZ='Asia/Kolkata'
+
 export botmsg="curl -s -X POST "https://api.telegram.org/bot${BOTAPI}/sendMessage" -d chat_id="${CHATID}" -d "disable_web_page_preview=true" -d "parse_mode=html" -d text"
 
 export TG=$HOME/telegram.sh/telegram
