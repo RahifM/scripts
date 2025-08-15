@@ -4,8 +4,7 @@ export botmsg="curl -s -X POST "https://api.telegram.org/bot${BOTAPI}/sendMessag
 
 export TG=$HOME/telegram.sh/telegram
 
-fmpgscrpt (){
-
+fmpgscrpt() {
 if [ -d "$HOME/telegram.sh" ]; then
 echo "Tgsh already exists"
 else
@@ -23,13 +22,13 @@ sed -i s/demo1/${BOTAPI}/g $HOME/.telegram.sh
 sed -i s/demo2/${CHATID}/g $HOME/.telegram.sh
 fi
 
-tm() {
+tms() {
         ( sudo apt install transmission-cli transmission-daemon -y && transmission-daemon && transmission-remote -l && transmission-remote -w $(pwd) ) 2>&1 | tee tm.txt
 }
-        tm
+        tms
 
         if [ "$(grep success tm.txt)" == "" ] ; then
-                tm
+                tms
 		rm tm.txt
         fi
 
@@ -39,8 +38,6 @@ tma() {
 	transmission-remote -t 1 -g20 &&
 	transmission-remote -t 1 -f | grep Yes && transmission-remote -t 1 -s
 }
-
-tma
 
 export i=Bleach.E021.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
 export o=Bleach.E021.mkv
@@ -75,18 +72,13 @@ low
 [ -f ${o} ] && up && echo "${o} encode / upload success" && $botmsg="${o} encode / upload success" || ( echo "${o} encode / upload failed" && $botmsg="${o} encode / upload failed" )
 }
 
+tmc() {
 while true ; do
 	if [ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 100%" ] ; then
 		echo $(transmission-remote -t 1 -i | grep State)
 		echo $(transmission-remote -t 1 -i | grep Percent)
 		echo "Downloaded, starting encode"
 		transmission-remote -t 1 -S
-		ls && pwd
-		cd Bl* && cd Bl* && pwd && du -hs *
-		fmpg
-		pwd && du -hs *
-		cd ../.. && rm -rf Bl*
-		#gp stop
 		break
 	fi
 	echo $(transmission-remote -t 1 -i | grep State)
@@ -96,7 +88,17 @@ while true ; do
 done
 }
 
+tma
+tmc
+
+ls && pwd && du -hs *
+cd Bl* && cd Bl* && pwd && du -hs *
+fmpg
+ls && pwd && du -hs *
+cd ../.. && rm -rf Bl*
+}
+
 fmpgscrpt 2>&1 | tee log-$(date +'%Y%m%d-%H%M').txt
 $TG -f log*.txt
-rm log*.txt
+rm *.txt
 gp stop
