@@ -36,16 +36,14 @@ tm() {
 tma() {
 	transmission-remote --start-paused -a "https://github.com/zmzu/dump/releases/download/1.0/Bleach.Box.1-6.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.torrent" &&
 	transmission-remote -t 1 -G all &&
-	transmission-remote -t 1 -g16 &&
+	transmission-remote -t 1 -g20 &&
 	transmission-remote -t 1 -f | grep Yes && transmission-remote -t 1 -s
 }
 
 tma
 
-export i=Bleach.E017.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
-export o=Bleach.E017.mkv
-
-cd Bl* && cd Bl* && pwd && du -hs *
+export i=Bleach.E021.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
+export o=Bleach.E021.mkv
 
 fmpg() {
 echo -e "\nPlease set input and input! (only 720p encodes supported as of now)\n"
@@ -78,12 +76,13 @@ low
 }
 
 while true ; do
-	if [ "$(transmission-remote -t 1 -i | grep State)" = "  State: Idle" ] ; then
+	if [ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 100%" ] ; then
 		echo $(transmission-remote -t 1 -i | grep State)
 		echo $(transmission-remote -t 1 -i | grep Percent)
-		echo "Idling, starting encode"
+		echo "Downloaded, starting encode"
 		transmission-remote -t 1 -S
 		ls && pwd
+		cd Bl* && cd Bl* && pwd && du -hs *
 		fmpg
 		pwd && du -hs *
 		cd ../.. && rm -rf Bl*
@@ -97,7 +96,7 @@ while true ; do
 done
 }
 
-fmpgscrpt 2>&1 | tee ${o}-log-$(date +'%Y%m%d-%H%M').txt
-$TG -f ${o}-log*.txt
-rm ${o}-log*.txt
+fmpgscrpt 2>&1 | tee log-$(date +'%Y%m%d-%H%M').txt
+$TG -f log*.txt
+rm log*.txt
 gp stop
