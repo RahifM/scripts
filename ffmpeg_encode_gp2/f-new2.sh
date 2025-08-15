@@ -22,7 +22,7 @@ sed -i s/demo1/${BOTAPI}/g $HOME/.telegram.sh
 sed -i s/demo2/${CHATID}/g $HOME/.telegram.sh
 fi
 
-tm (){
+tm() {
         ( sudo apt install transmission-cli transmission-daemon -y && transmission-daemon && transmission-remote -l && transmission-remote -w $(pwd) ) 2>&1 | tee tm.txt
 }
         tm
@@ -31,27 +31,25 @@ tm (){
                 tm
 		rm tm.txt
         fi
-	
+
+tma() {
 	transmission-remote --start-paused -a "https://github.com/zmzu/dump/releases/download/1.0/Bleach.Box.1-6.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.torrent" &&
 	transmission-remote -t 1 -G all &&
 	transmission-remote -t 1 -g16 &&
 	transmission-remote -t 1 -f | grep Yes && transmission-remote -t 1 -s
+}
+
+tma
 
 export i=Bleach.E017.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
 export o=Bleach.E017.mkv
 
+cd Bl* && cd Bl* && pwd && du -hs *
+
 fmpg() {
-
-	cd Bl* && cd Bl* && pwd && du -hs *
-
-	#time sudo apt install ffmpeg -y
-
 echo -e "\nPlease set input and input! (only 720p encodes supported as of now)\n"
 echo ${i}
 echo ${o}
-#read -e -p "Input: " i
-#read -e -p "Output: " o
-
 
 if [ -z "$i" -o -z "$o" ]; then
        echo -e "\nNo input or output found\n"
