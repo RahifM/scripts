@@ -35,12 +35,12 @@ tms() {
 tma() {
 	transmission-remote --start-paused -a "https://github.com/zmzu/dump/releases/download/1.0/Bleach.Box.1-6.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.torrent" &&
 	transmission-remote -t 1 -G all &&
-	transmission-remote -t 1 -g25 &&
+	transmission-remote -t 1 -g27 &&
 	transmission-remote -t 1 -f | grep Yes && transmission-remote -t 1 -s
 }
 
-export i=Bleach.E026.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
-export o=Bleach.E026.mkv
+export i=Bleach.E028.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
+export o=Bleach.E028.mkv
 
 fmpg() {
 echo -e "\nPlease set input and input! (only 720p encodes supported as of now)\n"
@@ -92,13 +92,14 @@ time tma
 time tmc
 
 ls && pwd && du -hs *
-cd Bl* && cd Bl* && pwd && du -hs *
+cd Bl* && cd Bl*028* && pwd && du -hs *
 fmpg
 ls && pwd && du -hs *
-cd ../.. && rm -rf Bl*
 }
 
 time fmpgscrpt 2>&1 | tee log-$(date +'%Y%m%d-%H%M').txt
+[ -f Bl*/Bl*028*/Bl*txt ] && mv log*txt log-$(ls Bl*/Bl*028*/Bl*txt | cut -d / -f 3)
 $TG -f log*.txt
 rm *.txt
+rm -rf Bl*
 gp stop
