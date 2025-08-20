@@ -91,10 +91,10 @@ done
 time tma
 time tmc
 
-ls && pwd && du -hs *
+pwd && du -hs *
 cd Bl* && cd Bl*028* && pwd && du -hs *
 fmpg
-ls && pwd && du -hs *
+pwd && du -hs *
 }
 
 time fmpgscrpt 2>&1 | tee log-$(date +'%Y%m%d-%H%M').txt
