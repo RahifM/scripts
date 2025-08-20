@@ -33,6 +33,7 @@ tms() {
         fi
 
 tma() {
+	[ -f Bl* ] && rm -rf Bl*
 	transmission-remote --start-paused -a "https://github.com/zmzu/dump/releases/download/1.0/Bleach.Box.1-6.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.torrent" &&
 	transmission-remote -t 1 -G all &&
 	transmission-remote -t 1 -g27 &&
@@ -101,5 +102,4 @@ time fmpgscrpt 2>&1 | tee log-$(date +'%Y%m%d-%H%M').txt
 [ -f Bl*/Bl*028*/Bl*txt ] && mv log*txt log-$(ls Bl*/Bl*028*/Bl*txt | cut -d / -f 3)
 $TG -f log*.txt
 rm *.txt
-rm -rf Bl*
 gp stop
