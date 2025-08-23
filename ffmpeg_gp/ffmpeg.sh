@@ -33,15 +33,15 @@ tms() {
         fi
 
 tma() {
-	[ -f Bl* ] && rm -rf Bl*
+	rm -rf Bl*
 	transmission-remote --start-paused -a "https://github.com/zmzu/dump/releases/download/1.0/Bleach.Box.1-6.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.torrent" &&
 	transmission-remote -t 1 -G all &&
-	transmission-remote -t 1 -g27 &&
+	transmission-remote -t 1 -g31 &&
 	transmission-remote -t 1 -f | grep Yes && transmission-remote -t 1 -s
 }
 
-export i=Bleach.E028.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
-export o=Bleach.E028.mkv
+export i=Bleach.E032.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
+export o=Bleach.E032.mkv
 
 fmpg() {
 echo -e "\nPlease set input and input! (only 720p encodes supported as of now)\n"
