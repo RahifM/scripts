@@ -82,10 +82,12 @@ while true ; do
 		transmission-remote -t 1 -S
 		break
 	fi
-	echo $(transmission-remote -t 1 -i | grep State)
-	echo $(transmission-remote -t 1 -i | grep Percent)
-	echo "check back after 5s"
-  sleep 5
+	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 0.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
+	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 25.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
+	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 50.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
+	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 75.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
+	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 100.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
+  sleep 1
 done
 }
 
