@@ -44,7 +44,7 @@ tma() {
 }
 
 fmpg() {
-echo -e "\nPlease set input and input! (only 720p encodes supported as of now)\n"
+echo -e "\nPlease set input and output! (only 720p encodes supported as of now)\n"
 echo ${i}
 echo ${o}
 
@@ -103,7 +103,7 @@ time tmc
 echo && pwd && du -hs *
 cd Bl* && cd Bl*028* && echo && pwd && du -hs *
 fmpg
-echo && pwd && du -hs *
+echo && echo && pwd && du -hs *
 }
 
 [ -f log*.txt ] && rm log*.txt
