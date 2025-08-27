@@ -75,6 +75,9 @@ low
 }
 
 tmc() {
+echo
+echo "Downloading..."
+echo
 while true ; do
 	if [ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 100%" ] ; then
 		echo $(transmission-remote -t 1 -i | grep State)
@@ -85,9 +88,6 @@ while true ; do
 		transmission-remote -t 1 -S
 		break
 	fi
-	echo
-	echo "Downloading..."
-	echo
 	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 5.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
 	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 25.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
 	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 50.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
