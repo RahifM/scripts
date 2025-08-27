@@ -4,6 +4,8 @@ export botmsg="curl -s -X POST "https://api.telegram.org/bot${BOTAPI}/sendMessag
 
 export TG=$HOME/telegram.sh/telegram
 
+. ./export.sh
+
 fmpgscrpt() {
 if [ -d "$HOME/telegram.sh" ]; then
 echo "Tgsh already exists"
@@ -36,12 +38,10 @@ tma() {
 	rm -rf Bl*
 	transmission-remote --start-paused -a "https://github.com/zmzu/dump/releases/download/1.0/Bleach.Box.1-6.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.torrent" &&
 	transmission-remote -t 1 -G all &&
-	transmission-remote -t 1 -g31 &&
+	echo "transmission-remote -t 1 -g${t}" &&
+	transmission-remote -t 1 -g${t} &&
 	transmission-remote -t 1 -f | grep Yes && transmission-remote -t 1 -s
 }
-
-export i=Bleach.E032.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.mkv
-export o=Bleach.E032.mkv
 
 fmpg() {
 echo -e "\nPlease set input and input! (only 720p encodes supported as of now)\n"
