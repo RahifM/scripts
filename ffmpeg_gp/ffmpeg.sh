@@ -63,6 +63,7 @@ low() {
 }
 
 up() {
+echo
 [ -f "github-release-2.0.0.2-ubuntu-bkup" ] && echo "gh rel already exists" || ( echo "gh rel not found" && time wget https://github.com/RahifM/releases/releases/download/1.0/github-release-2.0.0.2-ubuntu-bkup && chmod +x github-release-2.0.0.2-ubuntu-bkup )
 
 ./gi* upload --token $GHSECRET --owner 'zmzu' --repo 'be_dump' --tag '1.0' --file ${o} --name ${o}
@@ -70,7 +71,7 @@ up() {
 
 low
 
-[ -f ${o} ] && up && echo "${o} encode / upload success" && $botmsg="${o} encode / upload success" || ( echo "${o} encode / upload failed" && $botmsg="${o} encode / upload failed" )
+[ -f ${o} ] && up && echo && echo "${o} encode / upload success" && $botmsg="${o} encode / upload success" || ( echo && echo "${o} encode / upload failed" && $botmsg="${o} encode / upload failed" )
 }
 
 tmc() {
@@ -78,10 +79,15 @@ while true ; do
 	if [ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 100%" ] ; then
 		echo $(transmission-remote -t 1 -i | grep State)
 		echo $(transmission-remote -t 1 -i | grep Percent)
+		echo
 		echo "Downloaded, starting encode"
+		echo
 		transmission-remote -t 1 -S
 		break
 	fi
+	echo
+	echo "Downloading..."
+	echo
 	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 5.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
 	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 25.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
 	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 50.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
@@ -94,10 +100,10 @@ done
 time tma
 time tmc
 
-pwd && du -hs *
-cd Bl* && cd Bl*028* && pwd && du -hs *
+echo && pwd && du -hs *
+cd Bl* && cd Bl*028* && echo && pwd && du -hs *
 fmpg
-pwd && du -hs *
+echo && pwd && du -hs *
 }
 
 time fmpgscrpt 2>&1 | tee log-$(date +'%Y%m%d-%H%M').txt
