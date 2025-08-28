@@ -107,7 +107,6 @@ echo && echo && pwd && du -hs *
 }
 
 [ -f log*.txt ] && rm log*.txt
-time fmpgscrpt 2>&1 | tee log-$(date +'%Y%m%d-%H%M').txt
-[ -f Bl*/Bl*028*/Bl*txt ] && mv log*txt log-$(ls Bl*/Bl*028*/Bl*txt | cut -d / -f 3)
+time fmpgscrpt 2>&1 | tee log-${o}-$(date +'%Y%m%d-%H%M').txt
 $TG -f log*.txt
 gp stop
