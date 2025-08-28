@@ -79,7 +79,7 @@ echo
 echo "Downloading..."
 echo
 while true ; do
-	if [ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 100%" ] ; then
+	if [ "$(transmission-remote -t 1 -i | grep Percent | cut -d " " -f 2-)" = "Percent Done: 100%" ] ; then
 		echo $(transmission-remote -t 1 -i | grep State)
 		echo $(transmission-remote -t 1 -i | grep Percent)
 		echo
@@ -88,11 +88,11 @@ while true ; do
 		transmission-remote -t 1 -S
 		break
 	fi
-	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 5.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
-	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 25.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
-	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 50.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
-	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 75.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
-	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 100.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
+	[ "$(transmission-remote -t 1 -f | grep Yes | cut -d " " -f 5- | cut -d " " -f -1)" = "5%" ] && echo "5%"
+	[ "$(transmission-remote -t 1 -f | grep Yes | cut -d " " -f 5- | cut -d " " -f -1)" = "25%" ] && echo "25%"
+	[ "$(transmission-remote -t 1 -f | grep Yes | cut -d " " -f 5- | cut -d " " -f -1)" = "50%" ] && echo "50%"
+	[ "$(transmission-remote -t 1 -f | grep Yes | cut -d " " -f 5- | cut -d " " -f -1)" = "75%" ] && echo "75%"
+	[ "$(transmission-remote -t 1 -f | grep Yes | cut -d " " -f 5- | cut -d " " -f -1)" = "100%" ] && echo "100%"
   sleep 1
 done
 }
