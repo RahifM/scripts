@@ -88,6 +88,7 @@ while true ; do
 		transmission-remote -t 1 -S
 		break
 	fi
+	echo "$(transmission-remote -t 1 -f | grep Yes | cut -d " " -f 3- | cut -d " " -f -1)"
 	[ "$(transmission-remote -t 1 -f | grep Yes | cut -d " " -f 3- | cut -d " " -f -1)" = "5%" ] && echo "5%"
 	[ "$(transmission-remote -t 1 -f | grep Yes | cut -d " " -f 3- | cut -d " " -f -1)" = "25%" ] && echo "25%"
 	[ "$(transmission-remote -t 1 -f | grep Yes | cut -d " " -f 3- | cut -d " " -f -1)" = "50%" ] && echo "50%"
