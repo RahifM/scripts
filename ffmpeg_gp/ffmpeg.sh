@@ -9,11 +9,8 @@ export TG=$HOME/telegram.sh/telegram
 [ -f export.sh ] && . ./export.sh || ( echo "export.sh not found" && exit 1 )
 
 fmpgscrpt() {
-if [ -d "$HOME/telegram.sh" ]; then
-echo "Tgsh already exists"
-else
-time git clone https://github.com/fabianonline/telegram.sh $HOME/telegram.sh
-fi
+
+[ -d "$HOME/telegram.sh" ] || time git clone https://github.com/fabianonline/telegram.sh $HOME/telegram.sh
 
 if [ -d "$HOME/.telegram.sh" ]; then
 echo ".Tgsh already exists"
@@ -31,10 +28,7 @@ tms() {
 }
         tms
 
-        if [ "$(grep success tm.txt)" == "" ] ; then
-                tms
-		rm tm.txt
-        fi
+        [ "$(grep success tm.txt)" == "" ] && tms && rm tm.txt
 
 tma() {
 	[ -d Bl* ] && rm -rf Bl*
@@ -50,10 +44,7 @@ echo -e "\nPlease set input and output! (only 720p encodes supported as of now)\
 echo ${i}
 echo ${o}
 
-if [ -z "$i" -o -z "$o" ]; then
-       echo -e "\nNo input or output found\n"
-       exit 1
-fi
+[ -z "$i" -o -z "$o" ] && echo -e "\nNo input or output found\n" && exit 1
 
 $botmsg="${o} encode started"
 
