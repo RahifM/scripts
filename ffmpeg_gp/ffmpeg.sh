@@ -38,7 +38,7 @@ tms() {
 
 tma() {
 	[ -d Bl* ] && rm -rf Bl*
-	transmission-remote --start-paused -a "https://github.com/zmzu/dump/releases/download/1.0/Bleach.Box.1-6.1080p.BluRay.HEVC.AAC2.0.x265-RB26DETT.torrent" &&
+	transmission-remote --start-paused -a "${tl}" &&
 	transmission-remote -t 1 -G all &&
 	echo "transmission-remote -t 1 -g${t}" &&
 	transmission-remote -t 1 -g${t} &&
