@@ -1,10 +1,12 @@
+set -e
+
 export TZ='Asia/Kolkata'
 
 export botmsg="curl -s -X POST "https://api.telegram.org/bot${BOTAPI}/sendMessage" -d chat_id="${CHATID}" -d "disable_web_page_preview=true" -d "parse_mode=html" -d text"
 
 export TG=$HOME/telegram.sh/telegram
 
-. ./export.sh
+[ -f export.sh ] && . ./export.sh || ( echo "export.sh not found" && exit 1 )
 
 fmpgscrpt() {
 if [ -d "$HOME/telegram.sh" ]; then
