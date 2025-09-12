@@ -81,7 +81,7 @@ while true ; do
 		transmission-remote -t 1 -S
 		break
 	fi
-	echo $(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')
+	echo "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" "$(transmission-remote -t 1 -i | grep ETA)"
 	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 5.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
 	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 25.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
 	[ "$(transmission-remote -t 1 -i | grep Percent)" = "  Percent Done: 50.0%" ] && echo $(transmission-remote -t 1 -i | grep State) && echo $(transmission-remote -t 1 -i | grep Percent)
