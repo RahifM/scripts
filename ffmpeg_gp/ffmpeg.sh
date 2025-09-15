@@ -23,6 +23,9 @@ sed -i s/demo1/${BOTAPI}/g $HOME/.telegram.sh
 sed -i s/demo2/${CHATID}/g $HOME/.telegram.sh
 fi
 
+
+tmsa() {
+
 tms() {
         ( sudo apt install transmission-cli transmission-daemon -y && transmission-daemon && transmission-remote -l && transmission-remote -w $(pwd) ) 2>&1 | tee tm.txt
 }
@@ -30,7 +33,6 @@ tms() {
 
         [ "$(grep success tm.txt)" == "" ] && tms && rm tm.txt
 
-tma() {
 	[ -d Bl* ] && rm -rf Bl*
 	transmission-remote --start-paused -a "${tl}" &&
 	transmission-remote -t 1 -G all &&
@@ -90,7 +92,7 @@ while true ; do
 done
 }
 
-time tma
+time tmsa
 time tmc
 
 echo && pwd && du -hs *
