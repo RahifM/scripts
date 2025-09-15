@@ -96,7 +96,7 @@ time tmsa
 time tmc
 
 echo && pwd && du -hs *
-cd Bl* && cd Bl*028* && echo && pwd && du -hs *
+cd $(transmission-remote -t 1 -f | grep Yes | awk '{ print $7 }' | cut -d "/" -f -2) && echo && pwd && du -hs *
 fmpg
 echo && echo && pwd && du -hs *
 }
