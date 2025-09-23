@@ -97,6 +97,7 @@ time tmc
 
 echo && pwd && du -hs *
 cd $(transmission-remote -t 1 -f | grep Yes | awk '{ print $7 }' | cut -d "/" -f -2) && echo && pwd && du -hs *
+[ -f ${o} ] && rm ${o}
 fmpg
 echo && echo && pwd && du -hs *
 }
