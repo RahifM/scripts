@@ -88,7 +88,7 @@ while true ; do
 	[ "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" = "25%" ] && echo "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" "$(transmission-remote -t 1 -i | grep ETA)"
 	[ "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" = "50%" ] && echo "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" "$(transmission-remote -t 1 -i | grep ETA)"
 	[ "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" = "75%" ] && echo "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" "$(transmission-remote -t 1 -i | grep ETA)"
-	[ "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" = "100%" ] && echo "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" "$(transmission-remote -t 1 -i | grep ETA)"
+	[ "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" = "95%" ] && echo "$(transmission-remote -t 1 -f | grep Yes | awk '{ print $2 }')" "$(transmission-remote -t 1 -i | grep ETA)"
   sleep 1
 done
 }
