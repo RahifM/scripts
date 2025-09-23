@@ -39,6 +39,7 @@ tms() {
 	echo "transmission-remote -t 1 -g${t}" &&
 	transmission-remote -t 1 -g${t} &&
 	transmission-remote -t 1 -f | grep Yes && transmission-remote -t 1 -s
+	transmission-remote -t 1 -f | grep Yes > check.txt
 }
 
 fmpg() {
@@ -96,7 +97,7 @@ time tmsa
 time tmc
 
 echo && pwd && du -hs *
-cd $(transmission-remote -t 1 -f | grep Yes | awk '{ print $7 }' | cut -d "/" -f -2) && echo && pwd && du -hs *
+cd $(cat check.txt | awk '{ print $7 }' | cut -d "/" -f -2) && echo && pwd && du -hs *
 [ -f ${o} ] && rm ${o}
 fmpg
 echo && echo && pwd && du -hs *
