@@ -10,7 +10,7 @@ export TG=$HOME/telegram.sh/telegram
 
 fmpgscrpt() {
 
-[ -d "$HOME/telegram.sh" ] || time git clone https://github.com/fabianonline/telegram.sh $HOME/telegram.sh
+[ -d "$HOME/telegram.sh" ] || time git clone https://github.com/RahifM/telegram.sh $HOME/telegram.sh
 
 if [ -d "$HOME/.telegram.sh" ]; then
 echo ".Tgsh already exists"
