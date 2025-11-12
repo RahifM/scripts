@@ -7,12 +7,15 @@ repo init -u https://github.com/LineageOS/android.git -b lineage-18.1 --git-lfs
 /opt/crave/resync.sh
 export TZ=Asia/Kolkata && echo $(date)
 source build/envsetup.sh
+
+# start asb pick
 repopick -t R_asb_2024-03 && repopick -t R_asb_2024-04
-git fetch https://github.com/LineageOS/android refs/changes/08/392208/2 && git cherry-pick FETCH_HEAD && echo "asb pick1"
-repo sync -f LineageOS/android_external_sonivox && echo "asb sync"
-git fetch https://github.com/LineageOS/android_external_sonivox refs/changes/09/392209/1 && git cherry-pick FETCH_HEAD && echo "asb pick2"
-git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/07/392207/1 && git cherry-pick FETCH_HEAD && echo "asb pick3"
-git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/06/392206/1 && git cherry-pick FETCH_HEAD && echo "asb pick4"
+# prep for asb_2024-05
+cd .repo/manifests
+curl https://github.com/LineageOS/android/commit/d47595e960ad0376b7e6f16692a0c65247fc6691.patch | git am -3
+cd ../..
+repo sync --force-sync LineageOS/android_external_sonivox
+repopick -t R_asb_2024-05
 repopick -t R_asb_2024-06 && repopick -t R_asb_2024-07 && repopick -t R_asb_2024-08 && repopick -t R_asb_2024-09 && repopick -t R_asb_2024-10 && repopick -t R_asb_2024-11 && repopick -t R_asb_2024-12 && repopick -t R_asb_2025-01 && repopick -t R_asb_2025-02 && repopick -t R_asb_2025-03 && repopick -t R_asb_2025-04 && repopick -t R_asb_2025-05 && repopick -t R_asb_2025-06 && repopick -t R_asb_2025-09
 lunch lineage_beryllium-user
 make installclean
