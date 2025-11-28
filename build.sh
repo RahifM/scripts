@@ -10,11 +10,6 @@ source build/envsetup.sh
 
 # start asb pick
 repopick -t R_asb_2024-03 && repopick -t R_asb_2024-04
-# prep for asb_2024-05
-cd .repo/manifests
-curl https://github.com/LineageOS/android/commit/d47595e960ad0376b7e6f16692a0c65247fc6691.patch | git am -3
-cd ../..
-repo sync --force-sync LineageOS/android_external_sonivox
 repopick -t R_asb_2024-05
 repopick -t R_asb_2024-06 && repopick -t R_asb_2024-07 && repopick -t R_asb_2024-08 && repopick -t R_asb_2024-09 && repopick -t R_asb_2024-10 && repopick -t R_asb_2024-11 && repopick -t R_asb_2024-12 && repopick -t R_asb_2025-01 && repopick -t R_asb_2025-02 && repopick -t R_asb_2025-03 && repopick -t R_asb_2025-04 && repopick -t R_asb_2025-05 && repopick -t R_asb_2025-06 && repopick -t R_asb_2025-09
 lunch lineage_beryllium-user
