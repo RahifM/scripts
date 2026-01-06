@@ -1,6 +1,10 @@
 set -e
 
 rm -rf .repo/local_manifests
+rm -rf prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8
+rm -rf prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
+rm -rf prebuilts/clang/host/linux-x86
+rm -rf prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8
 
 #sudo ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6 /usr/lib/x86_64-linux-gnu/libncurses.so.5
 #sudo ln -s /usr/lib/x86_64-linux-gnu/libtinfo.so.6 /usr/lib/x86_64-linux-gnu/libtinfo.so.5
