@@ -6,6 +6,8 @@ rm -rf prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9
 rm -rf prebuilts/clang/host/linux-x86
 rm -rf prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8
 
+sudo sed -i 's|features = has_journal,extent,huge_file,flex_bg,metadata_csum,metadata_csum_seed,64bit,dir_nlink,extra_isize,orphan_file|features = has_journal,extent,huge_file,flex_bg,metadata_csum,metadata_csum_seed,64bit,dir_nlink,extra_isize|g' /etc/mke2fs.conf
+
 #sudo ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6 /usr/lib/x86_64-linux-gnu/libncurses.so.5
 #sudo ln -s /usr/lib/x86_64-linux-gnu/libtinfo.so.6 /usr/lib/x86_64-linux-gnu/libtinfo.so.5
 
