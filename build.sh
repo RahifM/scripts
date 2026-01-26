@@ -8,9 +8,6 @@ rm -rf prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8
 
 sudo sed -i 's|features = has_journal,extent,huge_file,flex_bg,metadata_csum,metadata_csum_seed,64bit,dir_nlink,extra_isize,orphan_file|features = has_journal,extent,huge_file,flex_bg,metadata_csum,metadata_csum_seed,64bit,dir_nlink,extra_isize|g' /etc/mke2fs.conf
 
-#sudo ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6 /usr/lib/x86_64-linux-gnu/libncurses.so.5
-#sudo ln -s /usr/lib/x86_64-linux-gnu/libtinfo.so.6 /usr/lib/x86_64-linux-gnu/libtinfo.so.5
-
 repo init -u https://github.com/LineageOS/android.git -b lineage-17.1 --git-lfs
 git clone https://github.com/RahifM/local_manifests --depth 1 -b lineage-17.1-beryllium .repo/local_manifests
 /opt/crave/resync.sh
@@ -18,8 +15,6 @@ git clone https://github.com/RahifM/local_manifests --depth 1 -b lineage-17.1-be
 export TZ=Asia/Kolkata && echo $(date)
 
 source build/envsetup.sh
-
-#repopick -t R_asb_2024-03 && repopick -t R_asb_2024-04 && repopick -t R_asb_2024-05 && repopick -t R_asb_2024-06 && repopick -t R_asb_2024-07 && repopick -t R_asb_2024-08 && repopick -t R_asb_2024-09 && repopick -t R_asb_2024-10 && repopick -t R_asb_2024-11 && repopick -t R_asb_2024-12 && repopick -t R_asb_2025-01 && repopick -t R_asb_2025-02 && repopick -t R_asb_2025-03 && repopick -t R_asb_2025-04 && repopick -t R_asb_2025-05 && repopick -t R_asb_2025-06 && repopick -t R_asb_2025-09 && repopick -t R_asb_2025-11 && repopick -t R_asb_2025-12
 
 lunch lineage_beryllium-user
 make installclean
