@@ -1,0 +1,5 @@
+crave run --no-patch -- "curl https://raw.githubusercontent.com/RahifM/scripts/refs/heads/cm-14.1-wt88047/build.sh | bash"
+
+crave run --no-patch -- "curl https://raw.githubusercontent.com/RahifM/scripts/refs/heads/lineage-17.1-beryllium/build.sh | bash"
+
+crave run --no-patch -- "curl https://raw.githubusercontent.com/RahifM/scripts/refs/heads/lineage-18.1-beryllium/build.sh | bash"
