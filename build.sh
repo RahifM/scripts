@@ -1,5 +1,12 @@
 set -e
 
+sudo apt update
+sudo apt install openjdk-8-jdk -y
+sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
+java -version
+javac -version
+
 rm -rf .repo/local_manifests
 repo init -u https://github.com/LineageOS/android.git -b cm-14.1 --depth=1 --git-lfs
 git clone https://github.com/RahifM/local_manifests --depth 1 -b cm-14.1 .repo/local_manifests
