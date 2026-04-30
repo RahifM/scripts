@@ -8,7 +8,7 @@ java -version
 javac -version
 sudo ln -s /usr/lib/x86_64-linux-gnu/libncursesw.so.6 /usr/lib/x86_64-linux-gnu/libncursesw.so.5
 sudo ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6 /usr/lib/x86_64-linux-gnu/libncurses.so.5
-
+sudo ln -s /usr/lib/x86_64-linux-gnu/libncursesw.so.6 /usr/lib/x86_64-linux-gnu/libtinfo.so.5
 
 rm -rf .repo/local_manifests
 repo init -u https://github.com/LineageOS/android.git -b cm-14.1 --depth=1 --git-lfs
