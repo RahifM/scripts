@@ -16,6 +16,7 @@ sudo apt install ./libpython2.7-minimal_2.7.18-13ubuntu1.5_amd64.deb ./libpython
 sudo rm -rf /usr/bin/python
 sudo ln -s /usr/bin/python2.7 /usr/bin/python
 python --version
+cd ../
 
 rm -rf .repo/local_manifests
 repo init -u https://github.com/LineageOS/android.git -b cm-14.1 --depth=1 --git-lfs
