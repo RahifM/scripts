@@ -25,6 +25,8 @@ git clone https://github.com/RahifM/local_manifests --depth 1 -b cm-14.1 .repo/l
 export TZ=Asia/Kolkata && echo $(date)
 export LC_ALL=C
 sudo sed -i 's|jdk.tls.disabledAlgorithms=SSLv3, TLSv1, TLSv1.1|jdk.tls.disabledAlgorithms=SSLv3|g' /etc/java-8-openjdk/security/java.security
+java -version
+javac -version
 source build/envsetup.sh
 lunch lineage_wt88047-user
 make installclean
