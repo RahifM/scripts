@@ -4,6 +4,11 @@ sudo apt update
 sudo apt install openjdk-8-jdk libncurses6 -y
 sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export PATH=$JAVA_HOME/bin:$PATH
+source ~/.bashrc
+echo $JAVA_HOME
+echo $PATH
 java -version
 javac -version
 sudo ln -s /usr/lib/x86_64-linux-gnu/libncursesw.so.6 /usr/lib/x86_64-linux-gnu/libncursesw.so.5
