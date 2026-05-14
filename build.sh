@@ -7,6 +7,7 @@ sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 export PATH=$JAVA_HOME/bin:$PATH
 source ~/.bashrc
+sudo ln -sf /etc/ssl/certs/java/cacerts ${JAVA_HOME}/jre/lib/security/cacerts
 echo $JAVA_HOME
 echo $PATH
 java -version
