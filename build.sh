@@ -32,6 +32,7 @@ export LC_ALL=C
 sudo sed -i 's|jdk.tls.disabledAlgorithms=SSLv3, TLSv1, TLSv1.1|jdk.tls.disabledAlgorithms=SSLv3|g' /etc/java-8-openjdk/security/java.security
 java -version
 javac -version
+rm -rf ~/.jack-server
 source build/envsetup.sh
 lunch lineage_wt88047-user
 make installclean
