@@ -1,7 +1,7 @@
 set -e
 
 sudo apt update
-sudo apt install openjdk-8-jdk libncurses6 -y
+sudo apt install openjdk-8-jdk libncurses6 libcurl4-openssl-dev -y
 sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
 sudo update-alternatives --set javac /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
