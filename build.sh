@@ -36,3 +36,4 @@ source build/envsetup.sh
 lunch lineage_wt88047-user
 make installclean
 m bacon
+ls ~/.jack-server
