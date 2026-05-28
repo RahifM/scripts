@@ -31,7 +31,6 @@ export TZ=Asia/Kolkata && echo $(date)
 export LC_ALL=C
 java -version
 javac -version
-rm -rf ~/.jack-server
 source build/envsetup.sh
 lunch lineage_wt88047-user
 make installclean
