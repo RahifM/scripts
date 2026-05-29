@@ -23,6 +23,7 @@ sudo ln -s /usr/bin/python2.7 /usr/bin/python
 python --version
 cd ../
 
+rm -rf build
 rm -rf .repo/local_manifests
 repo init -u https://github.com/LineageOS/android.git -b cm-14.1 --depth=1 --git-lfs
 git clone https://github.com/RahifM/local_manifests --depth 1 -b cm-14.1 .repo/local_manifests
