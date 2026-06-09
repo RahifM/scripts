@@ -36,8 +36,8 @@ pwd && ls
 export USE_NINJA=false
 rm -rf ~/.jack*
 export ANDROID_JACK_VM_ARGS="-Xmx4g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
-./prebuilts/sdk/tools/jack-admin kill-server
-./prebuilts/sdk/tools/jack-admin start-server
+#./prebuilts/sdk/tools/jack-admin kill-server
+#./prebuilts/sdk/tools/jack-admin start-server
 source build/envsetup.sh
 lunch lineage_wt88047-user
 make installclean
