@@ -33,6 +33,7 @@ export LC_ALL=C
 java -version
 javac -version
 pwd && ls
+sudo sed -i 's|keystore.type=jks|keystore.type=pkcs12|g' /etc/java-8-openjdk/security/java.security
 source build/envsetup.sh
 lunch lineage_wt88047-user
 make installclean
